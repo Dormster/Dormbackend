@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app ="dorm">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
@@ -8,8 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="./css/font.css">
 	<script type="text/javascript" src="./js/jquery.js"></script>
 	<script type="text/javascript" src="./js/bootstrap.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="app.js"></script>
 </head>
-<body>
+<body ng-controller = "DormController as dorm" ng-init = "dorm.query()">
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -22,7 +24,7 @@
 	<br><br>
 	<table border="0" align="center" class="t3">
 		<tr>
-			<td width="30%"><button class="add"><span class="glyphicon glyphicon-plus-sign">ADD Data</span></button>
+			<td width="30%"><button class="add"><span class="glyphicon glyphicon-plus-sign" ng-click = "dorm.goadd()">ADD Data</span></button>
 			</td>
 		</tr>
 	</table>
@@ -33,10 +35,9 @@
 			<td class="t4" width="20%"><center>แก้ไขข้อมูล</center></td>
 		</tr>
 
-		<tr>
-			<td class="data" width="20%">หอเขาใหญ่</td>
-			<td width="10%"><center><button type="button" class="btn btn-danger icon"><span class="glyphicon glyphicon-trash"></span></button> 
-
+		<tr ng-repeat="datadorm in dorm.data">
+			<td class="data" width="20%">{{datadorm.namedormair}}</td>
+			<td width="10%" ><center><button  class="btn btn-danger icon"><span class="glyphicon glyphicon-trash" ng-click = "dorm.delete(datadorm._id,$index)"></span></button> 
 			<button type="button" class="btn btn-warning icon"><span class="glyphicon glyphicon-pencil"></span></button></center></td>
 		</tr>
 

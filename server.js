@@ -45,6 +45,9 @@ app.post('/public/add',jsonParser, function(req , res){
 	res.send(true)
 	})
 })
+app.delete('/database',jsonParser, function(req , res){
+	console.log(req.body)
+})
 
 //app.use('/api', require('./routes/api'))
 app.listen(3000)

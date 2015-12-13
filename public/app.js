@@ -24,21 +24,33 @@ angular.module('dorm', [])
                   emproomfan : dorm.empair,
                   etc : dorm.etc
            }
-      $http.post('/public/add', data).then(function(response){
-          if(response.data) window.location = "add.html"
+      $http.post('/public/add', data).then(function(response){      
+          if(response.data){
+            window.location = "add.html" 
+            }
           else alert("Incorrect")
       })
     }
      dorm.cancer = function() {
      window.location = "admin.html"
     }
+    dorm.goadd = function() {
+     window.location = "add.html"
+    }
     dorm.delete = function(id,index){
-        $http.delete('/public/add'+id)
+        $http.post('/database/'+id)
           .then(function(response) {
-            dorm.data.splice(index,1)           
+            //dorm.data.splice(index,1)           
           })
           .error(function(data) {
             console.log('Error: ' + data)
           })
     }
+    dorm.query = function () {
+      $http.get('/database').success(function (response) {
+        dorm.data = response 
+        console.log(dorm.data)    
+         })
+    }
+
 })
