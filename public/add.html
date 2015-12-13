@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app ="dorm">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>Dormster ตัวช่วยค้นหาหอพักใกล้สถานศึกษา</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./css/font.css">
+	<script type='text/javascript' src='./js/jquery.js'></script>
+	<script type='text/javascript' src='./js/bootstrap.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body ng-controller = "DormController as dorm">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand"><img src="./IMG/logo_b.png" height="30px"></a>
+			</div>
+		</div>
+	</nav>
+	
+	<center>
+	
+	<br><br>
+	
+<br>
+<form  ng-submit ="dorm.addroom()">
+	<table border="0" bordercolor="#fff" cellpadding="10" align="center" class="t3">
+
+		<tr>
+			<td class="data" width="20%">ชื่อหอพัก</td>
+			<td width="60%"><center>
+				<div class="form-group">
+	      				<input type="text" class="form-control" placeholder="Name Dorm" ng-model = "dorm.namedorm">
+	  			</div></center>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">ที่อยู่</td>
+			<td width="60%"><center>
+				<div class="form-group">
+	      				<textarea  rows="3" cols="20" class="form-control" placeholder="Address" ng-model = "dorm.address">
+	      				</textarea>
+	  			</div></center>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">ราคา</td>
+			<td width="60%">
+				<div class="form-group">
+				    <input type="checkbox" id="price" value="air"> ห้องแอร์  &nbsp;
+				    <input type="number" width ="10px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.price">
+				</div>
+				<div class="form-group">
+				    <input type="checkbox" id="price" value="fan"> ห้องพัดลม  
+				    <input type="number" width ="10px" class="form-con2" placeholder="Price" ng-model = "dorm.priceair">
+				</div>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">เบอร์ติดต่อ</td>
+			<td width="60%"><center>
+				<div class="form-group">
+	      			<input type="number" maxlength="10" class="form-control" placeholder="Tel." ng-model = "dorm.tel">
+	  			</div></center>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">ชื่อเจ้าของเบอร์</td>
+			<td width="60%"><center>
+				<div class="form-group">
+	      			<input type="text" class="form-control" placeholder="Name Owner Tel." ng-model ="dorm.nametel">
+	  			</div></center>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">ระยะห่าง</td>
+			<td width="60%"><center>
+				<div class="form-group">
+	      			<input type="text" class="form-control" placeholder="Distance" ng-model ="dorm.distance">
+	  			</div></center>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">ห้องว่าง</td>
+			<td width="60%">
+				<div class="form-group">
+				    <input type="checkbox" id="price" value="air"> ห้องแอร์  &nbsp;
+				    <input type="number" width ="10px" class="form-con2" placeholder="Price" ng-model = "dorm.emp">
+				</div>
+				<div class="form-group">
+				    <input type="checkbox" id="price" value="fan"> ห้องพัดลม  
+				    <input type="number" width ="20px" class="form-con2" placeholder="Price" ng-model = "dorm.empair">
+				</div>
+	  		</td>
+		</tr>
+
+		<tr>
+			<td class="data" width="20%">สิ่งอำนวยความสะดวก</td>
+			<td width="60%"><center>
+				<div class="form-group">
+	      				<textarea  rows="3" cols="20" class="form-control" placeholder="Address" ng-model ="dorm.etc">
+	      				</textarea>
+	  			</div></center>
+	  		</td>
+		</tr>
+		<table border="0" align="center" class="t3">
+		<tr>
+			<td width="30%"><button class="add">ADD Data (เพิ่มข้อมูล)</button>
+			</td>
+		</tr>
+	</table>
+	</table>
+	</form>
+	</center>
+</body>
+</html>
+

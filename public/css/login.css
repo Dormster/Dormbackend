@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+body {
+	background-color: black;
+	font-family: 'Superspace Regular';
+	color: #999;
+}
+
+.login-form {
+    font: 16px/2em Lato, serif;
+    font-family: 'Superspace Regular';
+	margin: 100px auto;
+	max-width: 400px;
+}
+.login-form > section {
+		padding: 35px 35px 25px 35px;
+		border-radius: 5px;
+	}
+
+
+form[role=login] {
+	color: black;
+	background: #666666;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	}
+
+	form[role=login] input,
+	form[role=login] > button {
+		font-size: 15px;
+		padding: 10px 30px;
+	}
+	form[role=login] input {
+		color: #000000;
+		background: #666666;
+		border: none;
+		height: 2.6em;
+		padding: 10px 40px;
+		border: 1px solid #000000;
+	}
+	form[role=login] > div {
+		margin: 30px 0;
+		position: relative; 
+	}
+	form[role=login] > button {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		background: #000000;
+		color: #fff;
+	}
+	
+.form-control + .glyphicon {
+    position: absolute;
+    left: 0;
+	top: 14%;
+    padding: 8px 0 0 17px;
+	font-size: 15px;
+	color: #000000;
+}
+
+h1 {
+    font-size: 75px;
+    line-height: 18pt;
+  }
+
