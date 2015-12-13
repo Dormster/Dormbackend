@@ -1,8 +1,13 @@
 angular.module('dorm', [])
       .controller('DormController', function ($http, $scope) {
         var dorm = this
+        dorm.name = "ddddd"
         dorm.login = function() {
-      $http.post('/public/admin', {username : dorm.username , password : dorm.password}).then(function(response){
+         datalogin = {
+           username : dorm.username ,
+           password : dorm.password
+         }
+      $http.post('/public/admin', datalogin).then(function(response){
         if(response.data) window.location = "add.html"
           else alert("incorrect")
       })
@@ -20,8 +25,20 @@ angular.module('dorm', [])
                   etc : dorm.etc
            }
       $http.post('/public/add', data).then(function(response){
-          if(response.data) 
+          if(response.data) window.location = "add.html"
           else alert("Incorrect")
       })
+    }
+     dorm.cancer = function() {
+     window.location = "admin.html"
+    }
+    dorm.delete = function(id,index){
+        $http.delete('/public/add'+id)
+          .then(function(response) {
+            dorm.data.splice(index,1)           
+          })
+          .error(function(data) {
+            console.log('Error: ' + data)
+          })
     }
 })
