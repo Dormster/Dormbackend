@@ -1,10 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  ng-app ="dorm">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Dormster ตัวช่วยค้นหาหอพักใกล้สถานศึกษา</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<script type='text/javascript' src='./js/jquery.js'></script>
+	<script type='text/javascript' src='./js/bootstrap.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="app.js"></script>
+	
 </head>
-<body>
-	example
+<body ng-controller = "DormController as dorm" id="home">
+	<nav id="ScrollingNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapes">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">
+					<div class="logo-xs visible-xs"></div>
+					<div class="logo-lg hidden-xs"></div>
+				</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapes">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#home">Home</a></li>
+					<li><a href="./price.html">Price</a></li>
+					<li><a href="./distan.html">Distance</a></li>
+					<li><a href="./popular.html">Popular</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	<div class="bg-Slide">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="./IMG/4.jpg" alt="...">
+					<div class="carousel-caption visible-lg">
+						<h1>ขอต้อนรับสู่ Dormster</h1>
+						<h4>อยากรู้ว่าแถวนี้มีหอพักอยู่ตรงไหนบ้าง เราช่วยคุณได้</h4>
+						<br><br><br><br><br><br>
+						<a href="#tess"><div class="more hidden-xs">more detail</div></a>
+					</div>
+				</div>
+				<div class="item">
+					<img src="./IMG/2.jpg" alt="...">
+					<div class="carousel-caption">
+						<h1>ขอต้อนรับสู่ Dormster</h1>
+						<h4>อยากรู้ว่าแถวนี้มีหอพักอยู่ตรงไหนบ้าง เราช่วยคุณได้</h4>
+						<br><br><br><br><br><br>
+						<a href="#tess"><div class="more hidden-xs">more detail</div></a>
+					</div>
+				</div>
+				<div class="item">
+					<img src="./IMG/6.jpg" alt="...">
+					<div class="carousel-caption">
+						<h1>ขอต้อนรับสู่ Dormster</h1>
+						<h4>อยากรู้ว่าแถวนี้มีหอพักอยู่ตรงไหนบ้าง เราช่วยคุณได้</h4>
+						<br><br><br><br><br><br>
+						<a href="#tess"><div class="more hidden-xs">more detail</div></a>
+					</div>
+				</div>
+				<div class="item">
+					<img src="./IMG/7.jpg" alt="...">
+					<div class="carousel-caption">
+						<h1>ขอต้อนรับสู่ Dormster</h1>
+						<h4>อยากรู้ว่าแถวนี้มีหอพักอยู่ตรงไหนบ้าง เราช่วยคุณได้</h4>
+						<br><br><br><br><br><br>
+						<a href="#tess"><div class="more hidden-xs">more detail</div></a>
+					</div>
+				</div>
+				<div class="item">
+					<img src="./IMG/8.jpg" alt="...">
+					<div class="carousel-caption">
+						<h1>ขอต้อนรับสู่ Dormster</h1>
+						<h4>อยากรู้ว่าแถวนี้มีหอพักอยู่ตรงไหนบ้าง เราช่วยคุณได้</h4>
+						<br><br><br><br><br><br>
+						<a href="#tess"><div class="more hidden-xs">more detail</div></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var stickNavTop = $('#ScrollingNav').offset().top
+			var stickyNav = function () {
+				var scrollTop = $(window).scrollTop()
+				if(scrollTop > stickNavTop){
+					$('#ScrollingNav').removeClass('navbar navbar-default navbar-fixed-top')
+					$('#ScrollingNav').addClass('sticky')
+					$('#ScrollingNav').addClass('navbar navbar-inverse navbar-fixed-top')
+				}
+				else{
+					$('#ScrollingNav').removeClass('sticky')
+					$('#ScrollingNav').removeClass('navbar navbar-inverse navbar-fixed-top')
+					$('#ScrollingNav').addClass('navbar navbar-default navbar-fixed-top')
+				}
+			}
+			stickyNav()
+			$(window).scroll(function(){
+				stickyNav()
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+					if (target.length) {
+						$('html,body').animate({
+							scrollTop: target.offset().top
+						}, 1000);
+						return false;
+					}
+				}
+			});
+		});
+	</script>
+	<br id="tess"><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12"><h1 align="center">สำรวจหอพัก</h1><h4 align="center">ดูว่าหอพักแถวๆนี้ มีที่ไหนบ้างที่ใกล้กับ มจพ.ปราจีนบุรี</h4></div>
+		</div>
+		<div class="row">
+			<div ng-repeat="dorm in dormdb" class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/cactus.jpg">
+				<center><a href="detail/{{dorm._id}}" ng-click="querydorm(dorm._id)"><div class="enjoy-css">{{dorm.namedormair}}</div></a></center>
+			</div>
+		</div>
+	</div>
+	<br><br><br>
+	<div id="foot">
+		<br>
+		<h4 align="center" style="color:white"> Dormster &copy; All Right Reserve 2015 </h4>
+	</div>
 </body>
 </html>

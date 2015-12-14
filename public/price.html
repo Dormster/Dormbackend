@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Dormster ตัวช่วยค้นหาหอพักใกล้สถานศึกษา</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<script type='text/javascript' src='./js/jquery.js'></script>
+	<script type='text/javascript' src='./js/bootstrap.js'></script>
+</head>
+<body id="price">
+	<nav id="ScrollingNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapes">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">
+					<div class="logo-xs visible-xs"></div>
+					<div class="logo-lg hidden-xs"></div>
+				</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapes">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/">Home</a></li>
+					<li><a href="#price">Price</a></li>
+					<li><a href="./distan.html">Distance</a></li>
+					<li><a href="./popular.html">Popular</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	<!-- IMG background -->
+	<img class="img-responsive" src="./IMG/114359036.jpg">
+	<a href="#tess"><div class="lead-link hidden-xs">more detail<br><span aria-hidden="true" class="glyphicon glyphicon-menu-down"></span></div></a>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var stickNavTop = $('#ScrollingNav').offset().top
+			var stickyNav = function () {
+				var scrollTop = $(window).scrollTop()
+				if(scrollTop > stickNavTop){
+					$('#ScrollingNav').removeClass('navbar navbar-default navbar-fixed-top')
+					$('#ScrollingNav').addClass('sticky')
+					$('#ScrollingNav').addClass('navbar navbar-inverse navbar-fixed-top')
+				}
+				else{
+					$('#ScrollingNav').removeClass('sticky')
+					$('#ScrollingNav').removeClass('navbar navbar-inverse navbar-fixed-top')
+					$('#ScrollingNav').addClass('navbar navbar-default navbar-fixed-top')
+				}
+			}
+			stickyNav()
+			$(window).scroll(function(){
+				stickyNav()
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+					if (target.length) {
+						$('html,body').animate({
+							scrollTop: target.offset().top
+						}, 1000);
+						return false;
+					}
+				}
+			});
+		});
+	</script>
+	<br id="tess"><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12"><h1 align="center">ราคาหอพักต่างๆ</h1><h4 align="center">เรามีหลากหลายราคาให้คุณได้เลือกสรรที่เหมาะสำหรับคุณ</h4></div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/cactus.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1200</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1500</h2>
+			</div>
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/forest.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1600</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 2000</h2>
+			</div>
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/half-bread.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/white-stairs.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/journey.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/metro.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/washed-out-bridge.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/fuji-mount.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/shanghai-airport.jpg">
+				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
+				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
+			</div>
+		</div>
+	</div>
+	<br><br><br>
+	<div id="foot">
+		<br>
+		<h4 align="center" style="color:white"> Dormster &copy; All Right Reserve 2015</h4>
+	</div>
+</body>
+</html>

@@ -18,23 +18,21 @@
 				<a class="navbar-brand"><img src="./IMG/logo_b.png" height="30px"></a>
 			</div>
 		</div>
-	</nav>	
+	</nav>
+	
 	<center>
+	
 	<br><br>
-	<table border="0" align="center" class="t3">
-		<tr>
-			<td width="30%"><button class="add" disabled="">ADD Data (เพิ่มข้อมูล)</button>
-			</td>
-		</tr>
-	</table>
+	
 <br>
-<form >
+<form  ng-submit ="dorm.addroom()">
 	<table border="0" bordercolor="#fff" cellpadding="10" align="center" class="t3">
+
 		<tr>
 			<td class="data" width="20%">ชื่อหอพัก</td>
 			<td width="60%"><center>
 				<div class="form-group">
-	      				<input type="text" class="form-control" placeholder="Name Dorm" ng-model = "dorm.namedorm">
+	      				<input type="text" class="form-control" placeholder="Name Dorm" ng-model = "dorm.addnamedorm">
 	  			</div></center>
 	  		</td>
 		</tr>
@@ -43,7 +41,7 @@
 			<td class="data" width="20%">ที่อยู่</td>
 			<td width="60%"><center>
 				<div class="form-group">
-	      				<textarea  rows="3" cols="20" class="form-control" placeholder="Address" ng-model = "dorm.address">
+	      				<textarea  rows="3" cols="20" class="form-control" placeholder="Address" ng-model = "dorm.addaddress">
 	      				</textarea>
 	  			</div></center>
 	  		</td>
@@ -53,12 +51,12 @@
 			<td class="data" width="20%">ราคา</td>
 			<td width="60%">
 				<div class="form-group">
-				   	ห้องแอร์  &nbsp;
-				    <input type="number" width ="10px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.price">
+				    <input type="checkbox" id="price" value="air"> ห้องแอร์  &nbsp;
+				    <input type="number" width ="10px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.addprice">
 				</div>
 				<div class="form-group">
-				  	ห้องพัดลม  
-				    <input type="number" width ="10px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.priceair">
+				    <input type="checkbox" id="price" value="fan"> ห้องพัดลม  
+				    <input type="number" width ="10px" class="form-con2" placeholder="Price" ng-model = "dorm.addpriceair">
 				</div>
 	  		</td>
 		</tr>
@@ -67,7 +65,7 @@
 			<td class="data" width="20%">เบอร์ติดต่อ</td>
 			<td width="60%"><center>
 				<div class="form-group">
-	      			<input type="number" maxlength="10" class="form-control" placeholder="Tel." ng-model = "dorm.tel">
+	      			<input type="text" maxlength="10" class="form-control" placeholder="Tel." ng-model = "dorm.addtel">
 	  			</div></center>
 	  		</td>
 		</tr>
@@ -76,7 +74,7 @@
 			<td class="data" width="20%">ชื่อเจ้าของเบอร์</td>
 			<td width="60%"><center>
 				<div class="form-group">
-	      			<input type="text" class="form-control" placeholder="Name Owner Tel." ng-model ="dorm.nametel">
+	      			<input type="text" class="form-control" placeholder="Name Owner Tel." ng-model ="dorm.addnametel">
 	  			</div></center>
 	  		</td>
 		</tr>
@@ -85,7 +83,7 @@
 			<td class="data" width="20%">ระยะห่าง</td>
 			<td width="60%"><center>
 				<div class="form-group">
-	      			<input type="text" class="form-control" placeholder="Distance" ng-model ="dorm.distance">
+	      			<input type="text" class="form-control" placeholder="Distance" ng-model ="dorm.adddistance">
 	  			</div></center>
 	  		</td>
 		</tr>
@@ -94,28 +92,33 @@
 			<td class="data" width="20%">ห้องว่าง</td>
 			<td width="60%">
 				<div class="form-group">
-				    ห้องแอร์  &nbsp;
-				    <input type="number" width ="10px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.emp">
+				    <input type="checkbox" id="price" value="air"> ห้องแอร์  &nbsp;
+				    <input type="number" width ="10px" class="form-con2" placeholder="Price" ng-model = "dorm.addemp">
 				</div>
 				<div class="form-group">
-				     ห้องพัดลม  
-				    <input type="number" width ="20px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.empair">
+				    <input type="checkbox" id="price" value="fan"> ห้องพัดลม  
+				    <input type="number" width ="20px" class="form-con2" placeholder="Price" ng-model = "dorm.addempair">
 				</div>
 	  		</td>
 		</tr>
+
 		<tr>
 			<td class="data" width="20%">สิ่งอำนวยความสะดวก</td>
 			<td width="60%"><center>
 				<div class="form-group">
-	      				<textarea  rows="3" cols="20" class="form-control" placeholder="Address" ng-model ="dorm.etc">
+	      				<textarea  rows="3" cols="20" class="form-control" placeholder="Address" ng-model ="dorm.addetc">
 	      				</textarea>
 	  			</div></center>
 	  		</td>
 		</tr>
+		<table border="0" align="center" class="t3">
+		<tr>
+			<td width="30%"><button class="add">ADD Data (เพิ่มข้อมูล)</button>
+			</td>
+		</tr>
 	</table>
-		<button ng-click ="dorm.addroom()">เพิ่มข้อมูล</button> 
-		<button ng-click = "dorm.cancer()">ยกเลิก</button>
-	</form>	
+	</table>
+	</form>
 	</center>
 </body>
 </html>

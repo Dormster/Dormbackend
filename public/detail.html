@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html  ng-app ="dorm">
+<head>
+	<title>Dormster ตัวช่วยค้นหาหอพักใกล้สถานศึกษา</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<script type='text/javascript' src='./js/jquery.js'></script>
+	<script type='text/javascript' src='./js/bootstrap.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="app.js"></script>
+	<script src="index.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<style>
+		.button {
+			width: 50px;
+			height: 50px;
+			font-size: 15px;
+			border: 0px;
+			border-radius: 40px;
+			color: #fff
+		}
+		.active {
+			background-color: #cc0000;
+		}
+		
+	</style>
+</head>
+<body ng-controller = "DormController as dorm" >
+	<nav id="ScrollingNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapes">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">
+					<div class="logo-xs visible-xs"></div>
+					<div class="logo-lg hidden-xs"></div>
+				</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapes">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/">Home</a></li>
+					<li><a href="./price.html">Price</a></li>
+					<li><a href="./distan.html">Distance</a></li>
+					<li><a href="./popular.html">Popular</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div>	
+	</nav>
+	<!-- IMG background --> 
+	<img class="img-responsive" src="./IMG/road.jpg">
+	
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var stickNavTop = $('#ScrollingNav').offset().top
+			var stickyNav = function () {
+				var scrollTop = $(window).scrollTop()
+				if(scrollTop > stickNavTop){
+					$('#ScrollingNav').removeClass('navbar navbar-default navbar-fixed-top')
+					$('#ScrollingNav').addClass('sticky')
+					$('#ScrollingNav').addClass('navbar navbar-inverse navbar-fixed-top')
+				}
+				else{
+					$('#ScrollingNav').removeClass('sticky')
+					$('#ScrollingNav').removeClass('navbar navbar-inverse navbar-fixed-top')
+					$('#ScrollingNav').addClass('navbar navbar-default navbar-fixed-top')
+				}
+			}
+			stickyNav()
+			$(window).scroll(function(){
+				stickyNav()
+			})
+		})
+	</script>
+	<br>
+	<div class="container">
+		<table class="table">
+			<tr>
+				<td>
+					<p>Like</p>
+					<button class="button glyphicon glyphicon-thumbs-up" id="red" onclick="btnClick('red')"></button>
+					<button class="button glyphicon glyphicon-thumbs-down" id="blue" onclick="btnClick('blue')"></button>
+					
+    	<script>
+      var socket = io();
+      socket.on('chat message', function(obj){
+        $('#red').text(obj.red)
+        $('#blue').text(obj.blue)
+      });
+      function btnClick (color) {
+      	socket.emit('chat message', color);
+      	$('#red').removeClass('active');
+      	$('#blue').removeClass('active');
+      	
+      	$('#'+color).addClass('active');
+      	
+      }
+      </script>
+				</td>
+				<td>
+					<h1>ราคา</h1>
+					<h3>ห้องแอร์ ฿ {{detaildorm.priceair}}</h3>
+					<h3>ห้องพัดลม ฿ {{detaildorm.pricefan}}</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h1>{{detaildorm.namedormair}}</h1>
+					<h3>{{detaildorm.addressdormair}}</h3>
+				</td>
+				<td>
+					<h1>ติดต่อ</h1>
+					<h3>{{detaildorm.contract}} {{detaildorm.namecontact}}</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<iframe src="https://www.google.com/maps/d/embed?mid=zmVPU7_2Cd0c.kR3bC5rbiXjc" width="640" height="480"></iframe>
+				</td>
+				<td>
+					<h1>ระยะห่าง</h1>
+					<h3>{{detaildorm.distance}} กม.</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h1>สิ่งอำนวยความสะดวก</h1>
+					<h3>{{detaildorm.etc}}</h3>
+				</td>
+				<td>
+					<h1>ห้องว่าง</h1>
+					<h3>ห้องแอร์ {{detaildorm.emproomair}} ห้อง</h3>
+					<h3>ห้องพัดลม {{detaildorm.emproomfan}}  ห้อง</h3>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br><br><br>
+	<div id="foot">
+
+	</div>
+</body>
+</html>
