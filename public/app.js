@@ -38,13 +38,9 @@ angular.module('dorm', [])
      window.location = "add.html"
     }
     dorm.delete = function(id,index){
-        $http.post('/database/'+id)
-          .then(function(response) {
-            //dorm.data.splice(index,1)           
-          })
-          .error(function(data) {
-            console.log('Error: ' + data)
-          })
+        $http.post('/database', { _id : id}).then(function (response) {
+             dorm.data.splice(index,1)             
+         })
     }
     dorm.query = function () {
       $http.get('/database').success(function (response) {

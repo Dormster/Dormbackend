@@ -45,10 +45,15 @@ app.post('/public/add',jsonParser, function(req , res){
 	res.send(true)
 	})
 })
-app.delete('/database',jsonParser, function(req , res){
-	console.log(req.body)
-})
-
-//app.use('/api', require('./routes/api'))
+app.post('/database', function (req, res){
+      console.log(req.body._id)
+    dormdb.remove({_id : req.body._id}).exec(function (err, results){
+      if (err) {
+        res.status(500).send(err)
+      } else {
+        res.send(results)
+      }
+    })
+  })
 app.listen(3000)
 console.log('run in 3000')
