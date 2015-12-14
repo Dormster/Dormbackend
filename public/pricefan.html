@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app ="dorm">
 <head>
 	<title>Dormster ตัวช่วยค้นหาหอพักใกล้สถานศึกษา</title>
 	<meta charset="utf-8">
@@ -8,8 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 	<script type='text/javascript' src='./js/jquery.js'></script>
 	<script type='text/javascript' src='./js/bootstrap.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="app.js"></script>
 </head>
-<body id="price">
+<body ng-controller = "DormController as dorm" id="price">
 	<nav id="ScrollingNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -29,15 +31,16 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapes">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/">Home</a></li>
-					<li><a href="./price.html">Price</a></li>
+					<li><a href="#price">Pricefan</a></li>
+					<li><a href="./priceair.html">Priceair</a></li>
 					<li><a href="./distan.html">Distance</a></li>
-					<li><a href="./popular.html">Popular</a></li>
+					
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
 	</nav>
 	<!-- IMG background -->
-	<img class="img-responsive" src="./IMG/114359036.jpg">
+	<img class="img-responsive" src="http://i.imgur.com/2fei8WG.jpg">
 	<a href="#tess"><div class="lead-link hidden-xs">more detail<br><span aria-hidden="true" class="glyphicon glyphicon-menu-down"></span></div></a>
 	<script type='text/javascript'>
 		$(document).ready(function(){
@@ -83,46 +86,13 @@
 			<div class="col-xs-12"><h1 align="center">ราคาหอพักต่างๆ</h1><h4 align="center">เรามีหลากหลายราคาให้คุณได้เลือกสรรที่เหมาะสำหรับคุณ</h4></div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/cactus.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1200</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1500</h2>
+			<div class="col-md-4 col-xs-12" ng-repeat="dorm in dorm.datapricefan"
+			> 
+			<a href="detail/{{dorm._id}}" ng-click="querydorm(dorm._id)"><img class="img-dorm" src="{{dorm.links[0].Link}}"></a>
+				<h2 id="teng-a">ห้องพัดลม ฿ {{dorm.pricefan}}</h2>
 			</div>
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/forest.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1600</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 2000</h2>
-			</div>
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/half-bread.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/white-stairs.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/journey.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/metro.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/washed-out-bridge.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/fuji-mount.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
-			<div class="col-md-4 col-xs-12"><img class="img-dorm" src="./IMG/shanghai-airport.jpg">
-				<h2 id="teng-f">ห้องพัดลม ฿ 1800</h2>
-				<h2 id="teng-a">ห้องแอร์ ฿ 1800</h2>
-			</div>
+
+
 		</div>
 	</div>
 	<br><br><br>

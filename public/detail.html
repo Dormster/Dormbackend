@@ -10,23 +10,8 @@
 	<script type='text/javascript' src='./js/bootstrap.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="app.js"></script>
-	<script src="index.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-	<style>
-		.button {
-			width: 50px;
-			height: 50px;
-			font-size: 15px;
-			border: 0px;
-			border-radius: 40px;
-			color: #fff
-		}
-		.active {
-			background-color: #cc0000;
-		}
-		
-	</style>
 </head>
 <body ng-controller = "DormController as dorm" >
 	<nav id="ScrollingNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -48,15 +33,54 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapes">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/">Home</a></li>
-					<li><a href="./price.html">Price</a></li>
+					<li><a href="./pricefan.html">Pricefan</a></li>
+					<li><a href="./priceair.html">Priceair</a></li>
 					<li><a href="./distan.html">Distance</a></li>
-					<li><a href="./popular.html">Popular</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>	
 	</nav>
 	<!-- IMG background --> 
 	<img class="img-responsive" src="./IMG/road.jpg">
+	<!-- Button trigger modal -->
+
+
+<div ng-repeat="del in  dorm.dataslide" >
+	<div ng-repeat="(key, val) in del">
+<button class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
+
+  
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+     <img class="img-responsive" src="{{val}}" alt="...">
+      <div class="carousel-caption">
+        One Image
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
 	
 	<script type='text/javascript'>
 		$(document).ready(function(){
@@ -85,25 +109,7 @@
 		<table class="table">
 			<tr>
 				<td>
-					<p>Like</p>
-					<button class="button glyphicon glyphicon-thumbs-up" id="red" onclick="btnClick('red')"></button>
-					<button class="button glyphicon glyphicon-thumbs-down" id="blue" onclick="btnClick('blue')"></button>
-					
-    	<script>
-      var socket = io();
-      socket.on('chat message', function(obj){
-        $('#red').text(obj.red)
-        $('#blue').text(obj.blue)
-      });
-      function btnClick (color) {
-      	socket.emit('chat message', color);
-      	$('#red').removeClass('active');
-      	$('#blue').removeClass('active');
-      	
-      	$('#'+color).addClass('active');
-      	
-      }
-      </script>
+					<h1>{{detaildorm.namedormair}}</h1>
 				</td>
 				<td>
 					<h1>ราคา</h1>
@@ -113,7 +119,7 @@
 			</tr>
 			<tr>
 				<td>
-					<h1>{{detaildorm.namedormair}}</h1>
+					
 					<h3>{{detaildorm.addressdormair}}</h3>
 				</td>
 				<td>
@@ -123,7 +129,8 @@
 			</tr>
 			<tr>
 				<td>
-					<iframe src="https://www.google.com/maps/d/embed?mid=zmVPU7_2Cd0c.kR3bC5rbiXjc" width="640" height="480"></iframe>
+				
+					<iframe src="https://www.google.com/maps/d/embed?mid=zmVPU7_2Cd0c.k0uZFH_nQbts" width="640" height="480"></iframe>
 				</td>
 				<td>
 					<h1>ระยะห่าง</h1>

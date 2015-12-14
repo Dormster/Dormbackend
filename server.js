@@ -15,6 +15,11 @@ var dorm = new mongoose.Schema({
   distance: Number,
   emproomair: Number,
   emproomfan: Number,
+  links : [{
+  	Link : String
+  }
+  ],
+  maps : String,
   etc: String
 })
 var admindb = mongoose.model('admin', {})
@@ -31,6 +36,27 @@ app.use('/editdorm', express.static(__dirname + '/public'))
 app.get('/database', function (req, res) {
   dormdb.find({}, function (err, done) {
     res.send(done)
+  })
+})
+app.get('/dataslide', function (req, res) {
+  dormdb.find({}, function (err, done) {
+    res.send(done)
+  })
+})
+
+app.get('/databasesortpricefan', function (req, res) {
+  dormdb.find().sort({'pricefan':1}).exec(function (err, done) {
+   res.send(done) 
+  })
+})
+app.get('/databasesortpriceair', function (req, res) {
+  dormdb.find().sort({'priceair':1}).exec(function (err, done) {
+   res.send(done) 
+  })
+})
+app.get('/databasesortdistan', function (req, res) {
+  dormdb.find().sort({'distance':1}).exec(function (err, done) {
+   res.send(done) 
   })
 })
 
@@ -82,6 +108,6 @@ app.post('/database', function (req, res) {
   })
 })
 
-// app.use('/api', require('./routes/api'))
+
 app.listen(3000)
 console.log('run in 3000')

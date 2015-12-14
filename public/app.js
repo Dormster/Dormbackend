@@ -1,7 +1,7 @@
 angular.module('dorm', [])
   .controller('DormController', function ($http, $scope, $filter) {
     var dorm = this
-    $scope.testng = 'angular OK'
+    dorm.testng = 'angular OK'
     var arraylength
     var dormdata
     var i = 0
@@ -10,7 +10,7 @@ angular.module('dorm', [])
       $scope.dormdb = data
       arraylength = $scope.dormdb.length
       dormdata = data
-      // console.log(dormdata[0]._id)
+      
       getdata()
     }).error(function (data, status, headers, config) {})
 
@@ -24,7 +24,7 @@ angular.module('dorm', [])
           i++
         } while (i < arraylength)
 
-        // console.log($scope.detaildorm)
+         //console.log($scope.detaildorm)
         }).error(function (data, status, headers, config) {})
 
         $http.get('/editdata').success(function (data) {
@@ -33,7 +33,7 @@ angular.module('dorm', [])
             if (dormdata[i]._id == data) {
               // console.log(dormdata[i])
               $scope.detaildorm = dormdata[i]
-              console.log($scope.detaildorm)
+              //console.log($scope.detaildorm)
               dorm.id = $scope.detaildorm._id
               dorm.namedorm = $scope.detaildorm.namedormair
               dorm.address = $scope.detaildorm.addressdormair
@@ -46,6 +46,7 @@ angular.module('dorm', [])
               dorm.empair = $scope.detaildorm.emproomair
               dorm.empfan = $scope.detaildorm.emproomfan
               dorm.etc = $scope.detaildorm.etc
+              dorm.maps = $scope.detaildorm.maps
               break
             }
             i++
@@ -91,13 +92,15 @@ angular.module('dorm', [])
           $http.post('/public/update', data).then(function (response) {
             if (response.data) {
               window.location = '../data.html'
-              console.log('pass')
             }
             else alert('Incorrect')
           })
         }
         dorm.addroom = function () {
-          console.log('add')
+         
+          //dorm.add = dorm.links 
+          // console.log(dorm.link)
+
           data = { namedormair: dorm.addnamedorm,
             addressdormair: dorm.addaddress,
             priceair: dorm.addprice,
@@ -107,12 +110,13 @@ angular.module('dorm', [])
             distance: dorm.adddistance,
             emproomair: dorm.addemp,
             emproomfan: dorm.addempair,
-            etc: dorm.addetc
+            etc: dorm.addetc,
+            links : dorm.links,
+            maps : dorm.map
           }
           $http.post('/public/add', data).then(function (response) {
             if (response.data) {
               window.location = 'data.html'
-              console.log('pass')
             }
             else alert('Incorrect')
           })
@@ -142,7 +146,49 @@ angular.module('dorm', [])
         dorm.query = function () {
           $http.get('/database').success(function (response) {
             dorm.data = response
-            console.log(dorm.data)
+            //console.log(dorm.data)
           })
         }
-      })
+  
+          $http.get('/databasesortpricefan').success(function (response) {
+            //console.log("="+response)
+            dorm.datapricefan = response
+            
+          })
+          $http.get('/databasesortpriceair').success(function (response) {
+            //console.log("="+response)
+            dorm.datapriceair = response
+            
+          })
+           $http.get('/databasesortdistan').success(function (response) {
+            //console.log("="+response)
+            dorm.datadistan = response
+            
+          })
+           $http.get('/dataslide').success(function (response) {
+            console.log("="+response.namedormair)
+            dorm.dataslide = response
+            
+          })
+
+        dorm.links = [
+        
+
+        ]
+     dorm.add = function(link) {
+        var newLinks = {
+          Link: link
+        }
+         dorm.links.push(newLinks)
+         dorm.link = ''
+
+        link = ''   
+     }
+     dorm.map = ''
+     dorm.addmap = function(linkmap) {
+        dorm.newmap =  linkmap
+        dorm.map = dorm.newmap
+          
+     }
+
+})

@@ -51,11 +51,11 @@
 			<td class="data" width="20%">ราคา</td>
 			<td width="60%">
 				<div class="form-group">
-				    <input type="checkbox" id="price" value="air"> ห้องแอร์  &nbsp;
+				    ห้องแอร์  &nbsp;
 				    <input type="number" width ="10px" class="form-con2" placeholder="Price" min="0" ng-model = "dorm.addprice">
 				</div>
 				<div class="form-group">
-				    <input type="checkbox" id="price" value="fan"> ห้องพัดลม  
+				   ห้องพัดลม  
 				    <input type="number" width ="10px" class="form-con2" placeholder="Price" ng-model = "dorm.addpriceair">
 				</div>
 	  		</td>
@@ -92,11 +92,11 @@
 			<td class="data" width="20%">ห้องว่าง</td>
 			<td width="60%">
 				<div class="form-group">
-				    <input type="checkbox" id="price" value="air"> ห้องแอร์  &nbsp;
+				   ห้องแอร์  &nbsp;
 				    <input type="number" width ="10px" class="form-con2" placeholder="Price" ng-model = "dorm.addemp">
 				</div>
 				<div class="form-group">
-				    <input type="checkbox" id="price" value="fan"> ห้องพัดลม  
+				  	 ห้องพัดลม  
 				    <input type="number" width ="20px" class="form-con2" placeholder="Price" ng-model = "dorm.addempair">
 				</div>
 	  		</td>
@@ -111,14 +111,40 @@
 	  			</div></center>
 	  		</td>
 		</tr>
-		<table border="0" align="center" class="t3">
+		<tr>
+		<td class="data" width="20%">รูปภาพ</td>
+		<td>
+		<div class="input-group">
+      <input type="text" class="form-control" ng-model="dorm.link" placeholder="Place Link Here.">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="dorm.add(dorm.link)">Upload</button>
+      </span>
+    	</div>
+		</td>	
+		</tr>
+		<tr>
+		<td class="data" width="20%">Map Link</td>
+		<td>
+		<div class="input-group">
+      <input type="text" class="form-control" ng-model="dorm.linkmap" placeholder="Place Link Here.">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="dorm.addmap(dorm.linkmap)">Upload</button>
+      </span>
+    	</div>
+		</td>	
+		</tr>
+	</table>
+	<table border="0" align="center" class="t3">
 		<tr>
 			<td width="30%"><button class="add">ADD Data (เพิ่มข้อมูล)</button>
 			</td>
 		</tr>
 	</table>
-	</table>
 	</form>
+	
+			<div ng-repeat="re in dorm.links">
+				{{re.Link}}
+			</div>
 	</center>
 </body>
 </html>
