@@ -43,6 +43,11 @@ app.get('/dataslide', function (req, res) {
     res.send(done)
   })
 })
+app.get('/datamap', function (req, res) {
+  dormdb.find({}, function (err, done) {
+    res.send(done)
+  })
+})
 
 app.get('/databasesortpricefan', function (req, res) {
   dormdb.find().sort({'pricefan':1}).exec(function (err, done) {

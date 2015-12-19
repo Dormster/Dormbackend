@@ -15,7 +15,10 @@
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand"><img src="./IMG/logo_b.png" height="30px"></a>
+				<a class="navbar-brand" href="/">
+					<div class="logo-xs visible-xs"></div>
+					<div class="logo-lg hidden-xs"></div>
+				</a>
 			</div>
 		</div>
 	</nav>
@@ -134,17 +137,15 @@
 		</td>	
 		</tr>
 	</table>
+	<br>
 	<table border="0" align="center" class="t3">
 		<tr>
 			<td width="30%"><button class="add">ADD Data (เพิ่มข้อมูล)</button>
 			</td>
 		</tr>
 	</table>
+	<br>
 	</form>
-	
-			<div ng-repeat="re in dorm.links">
-				{{re.Link}}
-			</div>
 	</center>
 </body>
 </html>

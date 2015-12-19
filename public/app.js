@@ -20,6 +20,12 @@ angular.module('dorm', [])
           if (dormdata[i]._id == data) {
             // console.log(dormdata[i])
             $scope.detaildorm = dormdata[i]
+            dorm.test = $scope.detaildorm
+
+$('iframe#d1').attr('src',$scope.detaildorm.maps);           
+
+
+            console.log(dorm.test)
           }
           i++
         } while (i < arraylength)
@@ -33,7 +39,7 @@ angular.module('dorm', [])
             if (dormdata[i]._id == data) {
               // console.log(dormdata[i])
               $scope.detaildorm = dormdata[i]
-              //console.log($scope.detaildorm)
+              console.log($scope.detaildorm)
               dorm.id = $scope.detaildorm._id
               dorm.namedorm = $scope.detaildorm.namedormair
               dorm.address = $scope.detaildorm.addressdormair
@@ -145,8 +151,9 @@ angular.module('dorm', [])
         }
         dorm.query = function () {
           $http.get('/database').success(function (response) {
+            //console.log(response)
             dorm.data = response
-            //console.log(dorm.data)
+            
           })
         }
   
@@ -166,8 +173,14 @@ angular.module('dorm', [])
             
           })
            $http.get('/dataslide').success(function (response) {
-            console.log("="+response.namedormair)
+   
             dorm.dataslide = response
+                   console.log(dorm.dataslide)  
+          })
+           $http.get('/datamap').success(function (response) {
+            //console.log("="+response.namedormair)
+            dorm.datamap = response
+           // console.log(response)
             
           })
 
